@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Viral Product Shop</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+background:#f8f8f8;
+}
+
+.hero{
+height:100vh;
+background:url('https://i.ibb.co/1t8XbRPM/4910241.jpg') center/cover;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+color:white;
+padding:20px;
+}
+
+.hero h1{
+font-size:3rem;
+}
+
+.hero p{
+margin:15px 0;
+font-size:1.2rem;
+}
+
+.shop-btn{
+display:inline-block;
+padding:14px 30px;
+background:#ff5722;
+color:white;
+text-decoration:none;
+border-radius:50px;
+}
+
+.products{
+padding:40px 20px;
+}
+
+.products h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+.carousel{
+display:flex;
+overflow-x:auto;
+gap:20px;
+scroll-behavior:smooth;
+}
+
+.carousel::-webkit-scrollbar{
+display:none;
+}
+
+.card{
+min-width:280px;
+background:white;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 4px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:280px;
+object-fit:cover;
+}
+
+.card-content{
+padding:15px;
+}
+
+.price{
+font-size:20px;
+font-weight:bold;
+color:#ff5722;
+margin:10px 0;
+}
+
+.add-btn{
+width:100%;
+padding:12px;
+border:none;
+background:black;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.cart-icon{
+position:fixed;
+right:20px;
+bottom:20px;
+width:65px;
+height:65px;
+background:#ff5722;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+cursor:pointer;
+color:white;
+z-index:999;
+}
+
+.count{
+position:absolute;
+top:-5px;
+right:-5px;
+background:red;
+width:24px;
+height:24px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
+}
+
+.cart{
+position:fixed;
+right:-100%;
+top:0;
+width:100%;
+max-width:420px;
+height:100%;
+background:white;
+padding:20px;
+overflow:auto;
+transition:.3s;
+z-index:1000;
+}
+
+.cart.active{
+right:0;
+}
+
+.close{
+float:right;
+font-size:24px;
+cursor:pointer;
+}
+
+.cart-item{
+padding:10px 0;
+border-bottom:1px solid #ddd;
+}
+
+input,textarea,select{
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:8px;
+}
+
+.qr{
+display:none;
+margin-top:15px;
+text-align:center;
+}
+
+.qr img{
+width:220px;
+max-width:100%;
+}
+
+.send-btn{
+width:100%;
+padding:14px;
+margin-top:15px;
+background:green;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+footer{
+padding:25px;
+text-align:center;
+background:black;
+color:white;
+margin-top:30px;
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Viral Product Shop</h1>
+<p>COD Available • Best Prices • Offer For All Time</p>
+<a href="#products" class="shop-btn">Shop Now</a>
+</div>
+</section>
+
+<section class="products" id="products">
+<h2>Trending Products</h2>
+
+<div class="carousel">
+
+<div class="card">
+<img src="https://i.ibb.co/DPqk89bd/lv-0-20260608193017.jpg">
+<div class="card-content">
+<h3>Premium Pendant</h3>
+<div class="price">₹499</div>
+<button class="add-btn" onclick="addCart('Premium Pendant',499)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/CsSS4hYb/IMG-20260613-093218.png">
+<div class="card-content">
+<h3>Luxury Pendant</h3>
+<div class="price">₹599</div>
+<button class="add-btn" onclick="addCart('Luxury Pendant',599)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/Xf9qvm9p/Picsart-26-06-13-09-31-41-765.png">
+<div class="card-content">
+<h3>Couple Pendant</h3>
+<div class="price">₹699</div>
+<button class="add-btn" onclick="addCart('Couple Pendant',699)">Add To Cart</button>
+</div>
+</div>
+
+<div class="card">
+<img src="https://i.ibb.co/cKDy7vW5/file-0000000005c47207981e02b75be5a5cf.png">
+<div class="card-content">
+<h3>Heart Pendant</h3>
+<div class="price">₹799</div>
+<button class="add-btn" onclick="addCart('Heart Pendant',799)">Add To Cart</button>
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="cart-icon" onclick="toggleCart()">
+🛒
+<div class="count" id="count">0</div>
+</div>
+
+<div class="cart" id="cart">
+
+<span class="close" onclick="toggleCart()">✖</span>
+
+<h2>Your Order</h2>
+
+<div id="cartItems"></div>
+
+<input type="text" id="name" placeholder="Customer Name">
+
+<input type="text" id="phone" placeholder="Phone Number">
+
+<textarea id="address" rows="4" placeholder="Full Address"></textarea>
+
+<input type="text" id="city" placeholder="City">
+
+<input type="text" id="state" placeholder="State">
+
+<input type="text" id="pincode" placeholder="Pincode">
+
+<select id="payment" onchange="paymentChange()">
+<option value="COD">Cash On Delivery</option>
+<option value="Prepaid">Prepaid</option>
+</select>
+
+<div class="qr" id="qrBox">
+
+<p><b>Scan & Pay</b></p>
+
+<img src="https://i.ibb.co/7N2zJsZm/Account-QRCode-5204-DARK-THEME.png">
+
+<input type="text" id="utr" placeholder="Enter UTR / Transaction ID">
+
+</div>
+
+<button class="send-btn" onclick="sendOrder()">
+Place Order
+</button>
+
+</div>
+
+<footer>
+Contact: haribhai4646@gmail.com
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init("YOUR_PUBLIC_KEY");
+
+let cart=[];
+
+function addCart(name,price){
+
+cart.push({
+name:name,
+price:price
+});
+
+updateCart();
+}
+
+function updateCart(){
+
+document.getElementById("count").innerText=cart.length;
+
+let html="";
+
+cart.forEach(item=>{
+
+html+=`
+<div class="cart-item">
+<b>${item.name}</b><br>
+₹${item.price}
+</div>
+`;
+
+});
+
+document.getElementById("cartItems").innerHTML=html;
+}
+
+function toggleCart(){
+
+document.getElementById("cart").classList.toggle("active");
+
+}
+
+function paymentChange(){
+
+let value=document.getElementById("payment").value;
+
+document.getElementById("qrBox").style.display=
+value==="Prepaid" ? "block" : "none";
+
+}
+
+function sendOrder(){
+
+let name=document.getElementById("name").value;
+let phone=document.getElementById("phone").value;
+let address=document.getElementById("address").value;
+let city=document.getElementById("city").value;
+let state=document.getElementById("state").value;
+let pincode=document.getElementById("pincode").value;
+let payment=document.getElementById("payment").value;
+let utr=document.getElementById("utr").value;
+
+if(cart.length===0){
+alert("Cart Empty");
+return;
+}
+
+if(!name||!phone||!address||!city||!state||!pincode){
+alert("Please Fill Complete Details");
+return;
+}
+
+if(payment==="Prepaid" && !utr){
+alert("Enter UTR Number");
+return;
+}
+
+let order=cart.map(
+item=>item.name+" - ₹"+item.price
+).join("\n");
+
+let params={
+customer_name:name,
+customer_phone:phone,
+customer_address:address,
+customer_city:city,
+customer_state:state,
+customer_pincode:pincode,
+payment_method:payment,
+utr_number:utr,
+order_details:order,
+to_email:"haribhai4646@gmail.com"
+};
+
+emailjs.send(
+"YOUR_SERVICE_ID",
+"YOUR_TEMPLATE_ID",
+params
+).then(function(){
+
+alert("Order Sent Successfully");
+
+cart=[];
+updateCart();
+
+}).catch(function(error){
+
+alert("EmailJS Setup Required");
+
+console.log(error);
+
+});
+
+}
+
+</script>
+
+</body>
+  </html>
